@@ -1,8 +1,9 @@
-import React, { FC, useState } from 'react'
+import React, { FC, useEffect, useState } from 'react'
 import './App.css'
 import AddPizzaForm from './components/AddPizzaForm'
 import Pizza from './models/Pizza'
 import DiscplayPizzas from './components/DiscplayPizzas'
+import demoPizzas from './demoPizzas'
 
 const App: FC = () => {
 	const [pizzasList, setPizzasList] = useState<Pizza[]>([])
@@ -20,6 +21,10 @@ const App: FC = () => {
 	const deletePizza = (id: number) => {
 		setPizzasList(pizzasList.filter(pizza => pizza.id !== id))
 	}
+
+	useEffect(() => {
+		setPizzasList(demoPizzas)
+	}, [])
 
 	return (
 		<div className='App'>
